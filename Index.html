@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PIRANA | Certificate Verification</title>
+    <style>
+        body { font-family: monospace; background: #000; color: #0f0; text-align: center; padding: 50px; }
+        .box { border: 1px solid #0f0; padding: 20px; display: inline-block; }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1>VERIFICATION SUCCESSFUL</h1>
+        <p id="details">Loading Intern Record...</p>
+        <hr>
+        <p>Issued by: Harsh Kumar (Project Lead)</p>
+    </div>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const id = params.get('id');
+        const interns = {
+            "PIR-2026-001": "Intern Name - AI Development",
+            "PIR-2026-002": "Another Intern - Data Science"
+        };
+        document.getElementById('details').innerText = interns[id] || "Record Not Found";
+    </script>
+</body>
+</html>
