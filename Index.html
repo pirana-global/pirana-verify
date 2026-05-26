@@ -1,28 +1,141 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>PIRANA | Certificate Verification</title>
-    <style>
-        body { font-family: monospace; background: #000; color: #0f0; text-align: center; padding: 50px; }
-        .box { border: 1px solid #0f0; padding: 20px; display: inline-block; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PIRANA | Intelligent Systems Ecosystem</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:#03070d;color:#eaf4f8;font-family:'Outfit',sans-serif;min-height:100vh;-webkit-font-smoothing:antialiased;overflow-x:hidden;display:flex;flex-direction:column}
+.mono{font-family:'JetBrains Mono',monospace}
+
+/* Grid Background Matching verify.html exactly */
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(0,229,255,0.015) 1px,transparent 1px),linear-gradient(90deg,rgba(0,229,255,0.015) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;z-index:0}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:100;background:rgba(3,7,13,0.9);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,229,255,0.05);padding:14px 20px;display:flex;align-items:center}
+.nav-container{width:100%;max-width:800px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.nav-logo-box{width:32px;height:32px;background:#071222;border:1px solid rgba(0,229,255,0.1);display:flex;align-items:center;justify-content:center;border-radius:4px}
+.nav-logo-box i{color:#00e5ff;font-size:0.85rem}
+.nav-brand-text{display:flex;flex-direction:column}
+.nav-name{font-weight:900;font-size:1.15rem;letter-spacing:0.12em;color:#fff;line-height:1}
+.nav-sub{font-family:'JetBrains Mono',monospace;font-size:0.5rem;letter-spacing:0.18em;color:#00e5ff;text-transform:uppercase;margin-top:4px}
+.nav-right{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.12em;color:#3a546a;text-transform:uppercase}
+
+/* HERO MAIN */
+.main-content{position:relative;z-index:1;flex:1;max-width:800px;width:100%;margin:0 auto;padding:60px 20px;display:flex;flex-direction:column;justify-content:center;align-items:center}
+
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(0,229,255,0.03);border:1px solid rgba(0,229,255,0.15);padding:8px 16px;border-radius:100px;font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.15em;color:#00e5ff;text-transform:uppercase;margin-bottom:24px}
+.hero-badge-dot{width:6px;height:6px;background:#00e5ff;border-radius:50%;box-shadow:0 0 8px #00e5ff}
+
+.hero-title{font-size:3rem;font-weight:900;color:#fff;letter-spacing:-0.02em;line-height:1.1;text-align:center;margin-bottom:16px}
+.hero-title span{color:#00e5ff}
+.hero-desc{color:#768f9e;font-size:1.1rem;line-height:1.6;text-align:center;max-width:540px;margin-bottom:40px}
+
+/* MODULES GRID */
+.gateway-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;width:100%;max-width:680px;margin-bottom:40px}
+
+@media(max-width: 600px){
+  .gateway-grid { grid-template-columns: 1fr; gap: 16px; }
+  .hero-title { font-size: 2.2rem; }
+}
+
+.gate-card{background:linear-gradient(145deg,#050d1a,#071120);border:1px solid rgba(0,229,255,0.1);border-radius:14px;padding:28px 24px;text-decoration:none;transition:all 0.3s cubic-bezier(0.16, 1, 0.3, 1);position:relative;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,0.3)}
+.gate-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(0,229,255,0.2),transparent);transform:translateX(-100%);transition:transform 0.5s}
+
+.gate-card:hover{transform:translateY(-4px);border-color:rgba(0,229,255,0.25);box-shadow:0 15px 35px rgba(0,229,255,0.05)}
+.gate-card:hover::before{transform:translateX(100%)}
+
+.gate-icon{width:44px;height:44px;background:rgba(0,229,255,0.03);border:1px solid rgba(0,229,255,0.1);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;transition:all 0.3s}
+.gate-icon i{color:#00e5ff;font-size:1.1rem}
+.gate-card:hover .gate-icon{background:#00e5ff;border-color:#00e5ff}
+.gate-card:hover .gate-icon i{color:#03070d}
+
+.gate-title{font-size:1.25rem;font-weight:800;color:#fff;margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.gate-title i{font-size:0.85rem;color:#3a546a;transition:transform 0.3s}
+.gate-card:hover .gate-title i{transform:translateX(4px);color:#00ff9d}
+
+.gate-desc{color:#506d84;font-size:0.88rem;line-height:1.5;font-weight:400}
+
+/* INFRASTRUCTURE STRIP */
+.infra-strip{background:rgba(7,18,34,0.4);border:1px solid rgba(0,229,255,0.05);border-radius:10px;padding:14px 20px;width:100%;max-width:680px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.infra-item{display:flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.08em;color:#506d84;text-transform:uppercase}
+.infra-item i{color:#00ff9d}
+
+/* FOOTER */
+.pg-footer{position:relative;z-index:1;text-align:center;padding:24px;border-top:1px solid rgba(0,229,255,0.03);background:rgba(3,7,13,0.5)}
+.pg-footer p{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.08em;color:#3a546a;text-transform:uppercase;line-height:2}
+
+/* Animations */
+.fade{animation:fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both}
+.d1{animation-delay:0.1s}.d2{animation-delay:0.2s}
+@keyframes fadeUp{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
+</style>
 </head>
 <body>
-    <div class="box">
-        <h1>VERIFICATION SUCCESSFUL</h1>
-        <p id="details">Loading Intern Record...</p>
-        <hr>
-        <p>Issued by: Harsh Kumar (Project Lead)</p>
-    </div>
 
-    <script>
-        const params = new URLSearchParams(window.location.search);
-        const id = params.get('id');
-        const interns = {
-            "PIR-2026-001": "Intern Name - AI Development",
-            "PIR-2026-002": "Another Intern - Data Science"
-        };
-        document.getElementById('details').innerText = interns[id] || "Record Not Found";
-    </script>
+<nav class="nav">
+  <div class="nav-container">
+    <a href="#" class="nav-brand">
+      <div class="nav-logo-box">
+        <i class="fas fa-terminal"></i>
+      </div>
+      <div class="nav-brand-text">
+        <div class="nav-name">PIRANA</div>
+        <span class="nav-sub">Core Platform</span>
+      </div>
+    </a>
+    <div class="nav-right">Infrastructure Gateway</div>
+  </div>
+</nav>
+
+<main class="main-content">
+  
+  <div class="hero-badge fade">
+    <span class="hero-badge-dot"></span> System Live & Operational
+  </div>
+  
+  <h1 class="hero-title fade d1">Enterprise Operations<br><span>Portal Gateway</span></h1>
+  
+  <p class="hero-desc fade d1">
+    Secure localized node managing distributed operational infrastructure, automation pipelines, and cryptographic credential verifications.
+  </p>
+
+  <div class="gateway-grid fade d2">
+    
+    <a href="verify.html" class="gate-card">
+      <div class="gate-icon">
+        <i class="fas fa-shield-halved"></i>
+      </div>
+      <div class="gate-title">Credential Verification <i class="fas fa-arrow-right"></i></div>
+      <p class="gate-desc">Audit and trace corporate metadata credentials against immutable system records instantly via unique query keys.</p>
+    </a>
+
+    <a href="portal.html" class="gate-card">
+      <div class="gate-icon">
+        <i class="fas fa-cubes"></i>
+      </div>
+      <div class="gate-title">Employee Portal <i class="fas fa-arrow-right"></i></div>
+      <p class="gate-desc">Authorized access gateway for active development squads managing automated procurement pipelines and lead nodes.</p>
+    </a>
+
+  </div>
+
+  <div class="infra-strip fade d2">
+    <div class="infra-item"><i class="fas fa-circle-check"></i> SSL Encryption Active</div>
+    <div class="infra-item"><i class="fas fa-circle-check"></i> Decoupled Serverless Routing</div>
+    <div class="infra-item"><i class="fas fa-circle-check"></i> Cloud Nodes Online</div>
+  </div>
+
+</main>
+
+<footer class="pg-footer">
+  <p>PIRANA Core Ecosystem Engine · Protected Workspace Environment</p>
+  <p>Support Interoperability Protocols via connect.pirana@gmail.com</p>
+</footer>
+
 </body>
 </html>
