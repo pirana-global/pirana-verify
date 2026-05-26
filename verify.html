@@ -8,200 +8,202 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-body{background:#060d18;color:#eaf4f8;font-family:'Outfit',sans-serif;min-height:100vh;-webkit-font-smoothing:antialiased}
+body{background:#03070d;color:#eaf4f8;font-family:'Outfit',sans-serif;min-height:100vh;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 .mono{font-family:'JetBrains Mono',monospace}
 .hidden{display:none!important}
 
-/* Grid background */
-body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(0,229,255,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(0,229,255,0.025) 1px,transparent 1px);background-size:44px 44px;pointer-events:none;z-index:0}
+/* Strict Grid Background matching Screenshot_2026-05-26-22-23-18-00.jpg */
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(0,229,255,0.015) 1px,transparent 1px),linear-gradient(90deg,rgba(0,229,255,0.015) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;z-index:0}
 
 /* NAV */
-.nav{position:sticky;top:0;z-index:100;background:rgba(6,13,24,0.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,229,255,0.08);padding:10px 18px;display:flex;align-items:center;justify-content:space-between}
-.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none}
-.nav-logo{height:28px;width:auto}
-.nav-name{font-weight:900;font-size:1rem;letter-spacing:0.16em;color:#eaf4f8;line-height:1}
-.nav-sub{font-family:'JetBrains Mono',monospace;font-size:0.42rem;letter-spacing:0.22em;color:#00e5ff;text-transform:uppercase;margin-top:2px;display:block}
-.nav-right{font-family:'JetBrains Mono',monospace;font-size:0.5rem;letter-spacing:0.14em;color:#3a546a;text-transform:uppercase}
+.nav{position:sticky;top:0;z-index:100;background:rgba(3,7,13,0.9);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,229,255,0.05);padding:14px 20px;display:flex;align-items:center;justify-content:between}
+.nav-container{width:100%;max-width:480px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.nav-logo-box{width:32px;height:32px;background:#071222;border:1px solid rgba(0,229,255,0.1);display:flex;align-items:center;justify-content:center;border-radius:4px}
+.nav-logo-box i{color:#00e5ff;font-size:0.85rem}
+.nav-brand-text{display:flex;flex-direction:column}
+.nav-name{font-weight:900;font-size:1.15rem;letter-spacing:0.12em;color:#fff;line-height:1}
+.nav-sub{font-family:'JetBrains Mono',monospace;font-size:0.5rem;letter-spacing:0.18em;color:#00e5ff;text-transform:uppercase;margin-top:4px}
+.nav-right{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.12em;color:#3a546a;text-transform:uppercase;max-width:120px;text-align:right;line-height:1.4}
 
 /* Page wrapper */
-.wrap{position:relative;z-index:1;max-width:500px;margin:0 auto;padding:0 16px 60px}
+.wrap{position:relative;z-index:1;max-width:450px;margin:0 auto;padding:0 16px 60px}
 
 /* LOADING */
-.loading{text-align:center;padding:80px 0}
-.spinner{display:inline-block;width:20px;height:20px;border:2px solid rgba(0,229,255,0.2);border-top-color:#00e5ff;border-radius:50%;animation:spin 0.8s linear infinite;vertical-align:middle;margin-right:8px}
+.loading{text-align:center;padding:100px 0}
+.spinner{display:inline-block;width:24px;height:24px;border:2px solid rgba(0,229,255,0.1);border-top-color:#00e5ff;border-radius:50%;animation:spin 0.8s linear infinite;vertical-align:middle;margin-right:10px}
 @keyframes spin{to{transform:rotate(360deg)}}
-.loading-txt{font-family:'JetBrains Mono',monospace;font-size:0.7rem;letter-spacing:0.2em;color:#00e5ff;text-transform:uppercase;vertical-align:middle}
+.loading-txt{font-family:'JetBrains Mono',monospace;font-size:0.75rem;letter-spacing:0.15em;color:#00e5ff;text-transform:uppercase}
 
 /* STATE BOXES */
-.state-box{margin-top:48px;background:#0a1628;border:1px solid rgba(0,229,255,0.07);border-radius:12px;padding:40px 20px;text-align:center}
-.state-icon{width:72px;height:72px;border-radius:50%;border:2px solid rgba(0,229,255,0.1);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:1.6rem;color:#3a546a}
-.state-icon.red{border-color:rgba(255,77,109,0.3);background:rgba(255,77,109,0.06);color:#ff4d6d}
-.state-title{font-size:1.3rem;font-weight:800;color:#eaf4f8;margin-bottom:10px}
+.state-box{margin-top:40px;background:#071222;border:1px solid rgba(0,229,255,0.08);border-radius:14px;padding:45px 24px;text-align:center}
+.state-icon{width:64px;height:64px;border-radius:50%;border:1px solid rgba(0,229,255,0.15);display:flex;align-items:center;justify-content:center;margin:0 auto 24px;font-size:1.4rem;color:#3a546a}
+.state-icon.red{border-color:rgba(255,77,109,0.25);background:rgba(255,77,109,0.04);color:#ff4d6d}
+.state-title{font-size:1.4rem;font-weight:800;color:#fff;margin-bottom:12px}
 .state-title.red{color:#ff4d6d}
-.state-desc{color:#3a546a;font-size:0.88rem;line-height:1.7;margin-bottom:16px}
-.state-hint{display:inline-block;background:#0d1e35;border:1px solid rgba(0,229,255,0.08);font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:#3a546a;padding:8px 16px;border-radius:6px;word-break:break-all}
-.invalid-id{display:inline-block;background:rgba(255,77,109,0.1);border:1px solid rgba(255,77,109,0.2);color:#ff4d6d;font-family:'JetBrains Mono',monospace;font-size:0.78rem;padding:6px 16px;border-radius:6px;margin-bottom:16px}
-.state-contact{color:#3a546a;font-size:0.82rem}
-.state-contact span{color:#00e5ff}
+.state-desc{color:#768f9e;font-size:0.9rem;line-height:1.6;margin-bottom:20px}
+.state-hint{display:inline-block;background:#03070d;border:1px solid rgba(0,229,255,0.1);font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:#00e5ff;padding:10px 16px;border-radius:6px}
 
-/* VERIFIED */
-/* Badge */
-.badge-wrap{text-align:center;padding:28px 0 16px}
-.badge{display:inline-flex;align-items:center;gap:8px;background:rgba(0,255,157,0.08);border:1px solid rgba(0,255,157,0.28);padding:8px 20px;border-radius:100px;font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.2em;color:#00ff9d;text-transform:uppercase;margin-bottom:18px;animation:badgePulse 2.5s ease-in-out infinite}
-@keyframes badgePulse{0%,100%{box-shadow:0 0 0 0 rgba(0,255,157,0.4)}50%{box-shadow:0 0 0 10px rgba(0,255,157,0)}}
-.badge-dot{width:7px;height:7px;background:#00ff9d;border-radius:50%;animation:blink 1.4s ease-in-out infinite}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
-.confirm-title{font-size:2rem;font-weight:900;color:#eaf4f8;letter-spacing:-0.02em;margin-bottom:8px}
-.confirm-sub{color:#3a546a;font-size:0.88rem;line-height:1.6}
+/* VERIFIED INTERFACE */
+/* Upper Pill Badge */
+.badge-wrap{text-align:center;padding:40px 0 28px}
+.badge{display:inline-flex;align-items:center;justify-content:center;gap:12px;background:rgba(0,255,157,0.02);border:1px solid rgba(0,255,157,0.2);padding:14px 28px;border-radius:100px;font-family:'JetBrains Mono',monospace;font-size:0.72rem;letter-spacing:0.22em;color:#00ff9d;text-transform:uppercase;margin-bottom:32px;width:100%}
+.badge-dot{width:8px;height:8px;background:#00ff9d;border-radius:50%;box-shadow:0 0 10px #00ff9d}
+.confirm-title{font-size:2.4rem;font-weight:900;color:#fff;letter-spacing:-0.01em;margin-bottom:14px;line-height:1.1}
+.confirm-sub{color:#768f9e;font-size:1.05rem;line-height:1.5;font-weight:400}
 
-/* Download section */
-.dl-box{background:linear-gradient(135deg,rgba(0,229,255,0.09),rgba(0,229,255,0.03));border:1px solid rgba(0,229,255,0.25);border-radius:12px;padding:20px;text-align:center;margin-bottom:14px}
-.dl-label{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.22em;color:#00e5ff;text-transform:uppercase;margin-bottom:8px}
-.dl-desc{color:#8eb0c4;font-size:0.85rem;margin-bottom:16px}
-.dl-btn{display:inline-flex;align-items:center;gap:10px;background:#00e5ff;color:#000;font-weight:800;font-size:0.92rem;padding:13px 28px;border-radius:8px;text-decoration:none;transition:all 0.2s;animation:btnGlow 2.5s ease-in-out infinite}
-@keyframes btnGlow{0%,100%{box-shadow:0 0 14px rgba(0,229,255,0.4)}50%{box-shadow:0 0 30px rgba(0,229,255,0.8)}}
-.dl-btn:hover{background:#fff;transform:scale(1.03)}
-.dl-note{font-family:'JetBrains Mono',monospace;font-size:0.48rem;color:#3a546a;letter-spacing:0.12em;text-transform:uppercase;margin-top:10px}
+/* Download box style */
+.dl-box{background:linear-gradient(135deg,rgba(0,229,255,0.06),rgba(0,229,255,0.01));border:1px solid rgba(0,229,255,0.2);border-radius:14px;padding:24px;text-align:center;margin-bottom:20px}
+.dl-label{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.18em;color:#00e5ff;text-transform:uppercase;margin-bottom:10px}
+.dl-desc{color:#768f9e;font-size:0.88rem;margin-bottom:16px}
+.dl-btn{display:inline-flex;align-items:center;gap:10px;background:#00e5ff;color:#000;font-weight:800;font-size:0.95rem;padding:12px 24px;border-radius:6px;text-decoration:none;transition:all 0.2s}
+.dl-btn:hover{background:#fff;transform:translateY(-1px)}
 
-/* Certificate card */
-.cert-card{background:linear-gradient(145deg,#0a1628,#0d1e35);border:1px solid rgba(0,229,255,0.15);border-radius:14px;overflow:hidden;position:relative;margin-bottom:12px}
-.cert-top-line{height:2px;background:linear-gradient(90deg,transparent,#00e5ff,transparent)}
-.scan-line{position:absolute;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(0,229,255,0.15),transparent);animation:scan 3.5s linear infinite;pointer-events:none}
-@keyframes scan{0%{top:0}100%{top:100%}}
-.watermark{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;user-select:none}
-.watermark span{font-size:4.5rem;font-weight:900;color:rgba(0,255,157,0.025);letter-spacing:0.15em;transform:rotate(-18deg)}
-.cert-body{padding:22px 18px;position:relative}
+/* Certificate Card Container */
+.cert-card{background:linear-gradient(145deg,#050d1a,#071120);border:1px solid rgba(0,229,255,0.12);border-radius:18px;overflow:hidden;position:relative;margin-bottom:20px;box-shadow:0 20px 40px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05)}
+.cert-body{padding:32px 24px;position:relative}
 
-/* Card header */
-.cert-header{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:16px}
-.cert-brand{display:flex;align-items:center;gap:10px}
-.cert-brand-logo{height:36px;width:auto}
-.cert-brand-name{font-weight:900;font-size:1rem;letter-spacing:0.16em;color:#eaf4f8;line-height:1}
-.cert-brand-sub{font-family:'JetBrains Mono',monospace;font-size:0.4rem;letter-spacing:0.12em;color:#00e5ff;text-transform:uppercase;margin-top:3px;display:block;line-height:1.6}
-.cert-id-col{text-align:right;flex-shrink:0}
-.cert-id-lbl{font-family:'JetBrains Mono',monospace;font-size:0.42rem;letter-spacing:0.18em;color:#3a546a;text-transform:uppercase;margin-bottom:3px}
-.cert-id-val{font-family:'JetBrains Mono',monospace;font-size:0.82rem;font-weight:600;color:#00e5ff}
-.divider{border:none;border-top:1px solid rgba(0,229,255,0.07);margin:14px 0}
+/* Card Header Layout */
+.cert-header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:28px}
+.cert-brand{display:flex;align-items:center;gap:12px}
+.cert-logo-placeholder{width:42px;height:42px;background:#08162b;border:1px solid rgba(0,229,255,0.15);display:flex;align-items:center;justify-content:center;border-radius:4px}
+.cert-logo-placeholder i{color:#00e5ff;font-size:1.1rem}
+.cert-brand-title{font-weight:900;font-size:1.35rem;letter-spacing:0.08em;color:#fff;line-height:1}
+.cert-brand-sub{font-family:'JetBrains Mono',monospace;font-size:0.48rem;letter-spacing:0.1em;color:#00e5ff;text-transform:uppercase;margin-top:5px;line-height:1.4;display:block}
+.cert-id-col{text-align:right}
+.cert-id-lbl{font-family:'JetBrains Mono',monospace;font-size:0.48rem;letter-spacing:0.12em;color:#506d84;text-transform:uppercase;margin-bottom:5px}
+.cert-id-val{font-family:'JetBrains Mono',monospace;font-size:0.95rem;font-weight:500;color:#00e5ff;letter-spacing:0.02em}
 
-/* Recipient */
-.lbl-sm{font-family:'JetBrains Mono',monospace;font-size:0.48rem;letter-spacing:0.22em;color:#3a546a;text-transform:uppercase;margin-bottom:6px}
-.cert-name{font-size:2rem;font-weight:900;color:#eaf4f8;letter-spacing:-0.02em;line-height:1.05;margin-bottom:5px}
-.cert-role{font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.2em;color:#00e5ff;text-transform:uppercase;margin-bottom:16px}
+/* Meta Data Labels */
+.lbl-sm{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.2em;color:#506d84;text-transform:uppercase;margin-bottom:12px}
+.cert-name{font-size:2.6rem;font-weight:900;color:#fff;letter-spacing:-0.01em;line-height:1;margin-bottom:8px}
+.cert-role{font-family:'JetBrains Mono',monospace;font-size:0.78rem;letter-spacing:0.16em;color:#00e5ff;text-transform:uppercase;margin-bottom:32px;font-weight:500}
 
-/* Project block */
-.project-block{background:rgba(0,229,255,0.04);border:1px solid rgba(0,229,255,0.1);border-radius:8px;padding:14px;margin-bottom:16px}
-.project-title{font-size:1rem;font-weight:700;color:#eaf4f8;margin-bottom:6px;line-height:1.3}
-.project-desc{font-size:0.82rem;color:#8eb0c4;line-height:1.68}
+/* Project Info Block */
+.project-block{background:rgba(0,229,255,0.02);border:1px solid rgba(0,229,255,0.06);border-radius:10px;padding:24px 20px;margin-bottom:24px}
+.project-title{font-size:1.3rem;font-weight:800;color:#fff;margin-bottom:10px;line-height:1.3}
+.project-desc{font-size:0.92rem;color:#768f9e;line-height:1.65;font-weight:400}
 
-/* Meta 2x2 */
-.meta-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px}
-.meta-cell{background:rgba(6,13,24,0.7);border:1px solid rgba(0,229,255,0.06);border-radius:8px;padding:12px}
-.meta-lbl{font-family:'JetBrains Mono',monospace;font-size:0.44rem;letter-spacing:0.18em;color:#3a546a;text-transform:uppercase;margin-bottom:4px}
-.meta-val{font-size:0.9rem;font-weight:600;color:#eaf4f8}
+/* Meta Item Grid layout */
+.meta-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:32px}
+.meta-cell{background:rgba(3,7,13,0.4);border:1px solid rgba(0,229,255,0.05);border-radius:10px;padding:16px 18px}
+.meta-lbl{font-family:'JetBrains Mono',monospace;font-size:0.48rem;letter-spacing:0.14em;color:#506d84;text-transform:uppercase;margin-bottom:6px}
+.meta-val{font-size:1.05rem;font-weight:700;color:#fff}
 .meta-val.green{color:#00ff9d}
 
-/* Skills */
-.skills-lbl{font-family:'JetBrains Mono',monospace;font-size:0.48rem;letter-spacing:0.2em;color:#3a546a;text-transform:uppercase;margin-bottom:8px}
-.skills-wrap{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px}
-.skill{font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:#7dd3e8;background:rgba(0,229,255,0.07);border:1px solid rgba(0,229,255,0.18);padding:4px 10px;border-radius:5px}
+/* Tech Skills Section */
+.skills-lbl{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.16em;color:#506d84;text-transform:uppercase;margin-bottom:14px}
+.skills-wrap{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:36px}
+.skill{font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:#00e5ff;background:rgba(0,229,255,0.03);border:1px solid rgba(0,229,255,0.12);padding:8px 16px;border-radius:4px}
 
-/* Signature */
-.sig-row{border-top:1px solid rgba(0,229,255,0.07);padding-top:16px;display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:12px}
-.sig-name{font-weight:900;font-size:0.95rem;letter-spacing:0.16em;color:#eaf4f8;margin-bottom:3px}
-.sig-title{font-family:'JetBrains Mono',monospace;font-size:0.42rem;letter-spacing:0.14em;color:#3a546a;text-transform:uppercase}
-.sig-email{font-family:'JetBrains Mono',monospace;font-size:0.42rem;letter-spacing:0.1em;color:#00e5ff;margin-top:2px}
+/* Signatures / Visual Checkbox */
+.sig-row{padding-top:10px;display:flex;align-items:flex-end;justify-content:space-between;gap:12px}
+.sig-name{font-weight:900;font-size:1.15rem;letter-spacing:0.08em;color:#fff;margin-bottom:4px}
+.sig-title{font-family:'JetBrains Mono',monospace;font-size:0.5rem;letter-spacing:0.1em;color:#506d84;text-transform:uppercase;line-height:1.4}
+.sig-email{font-family:'JetBrains Mono',monospace;font-size:0.5rem;letter-spacing:0.05em;color:#00e5ff;margin-top:4px}
 .sig-right{text-align:right}
-.sig-tick{width:38px;height:38px;border-radius:50%;background:rgba(0,255,157,0.08);border:2px solid rgba(0,255,157,0.28);display:flex;align-items:center;justify-content:center;margin-left:auto;margin-bottom:5px;color:#00ff9d;font-size:0.9rem}
-.sig-verified{font-family:'JetBrains Mono',monospace;font-size:0.42rem;letter-spacing:0.14em;color:#00ff9d;text-transform:uppercase}
-.sig-url{font-family:'JetBrains Mono',monospace;font-size:0.38rem;letter-spacing:0.1em;color:#1e3a4a;text-transform:uppercase;margin-top:2px}
+.sig-tick{width:48px;height:48px;border-radius:50%;background:rgba(0,255,157,0.03);border:1px solid rgba(0,255,157,0.25);display:flex;align-items:center;justify-content:center;margin-left:auto;margin-bottom:10px;color:#00ff9d;font-size:1.2rem}
+.sig-verified{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.12em;color:#00ff9d;text-transform:uppercase;font-weight:500}
+.sig-url{font-family:'JetBrains Mono',monospace;font-size:0.48rem;letter-spacing:0.05em;color:#3a546a;text-transform:uppercase;margin-top:4px}
 
-/* Integrity strip */
-.integrity{background:rgba(6,13,24,0.5);border:1px solid rgba(0,229,255,0.06);border-radius:10px;padding:14px 16px;margin-bottom:12px}
-.integrity-hdr{display:flex;align-items:center;gap:8px;margin-bottom:10px}
-.integrity-icon{color:#00e5ff;font-size:0.9rem}
-.integrity-title{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.18em;color:#8eb0c4;text-transform:uppercase}
-.integrity-pass{margin-left:auto;font-family:'JetBrains Mono',monospace;font-size:0.56rem;color:#00ff9d;background:rgba(0,255,157,0.08);border:1px solid rgba(0,255,157,0.2);padding:2px 10px;border-radius:4px;letter-spacing:0.1em}
-.integrity-checks{display:flex;flex-direction:column;gap:7px}
-.chk{display:flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:0.56rem;letter-spacing:0.1em;color:#3a546a;text-transform:uppercase}
-.chk i{color:#00ff9d;font-size:0.65rem}
+/* Integrity Container Layout */
+.integrity{background:#071222;border:1px solid rgba(0,229,255,0.06);border-radius:12px;padding:22px 24px;margin-bottom:28px}
+.integrity-hdr{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.integrity-icon{color:#00e5ff;font-size:1rem}
+.integrity-title{font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.16em;color:#768f9e;text-transform:uppercase}
+.integrity-pass{margin-left:auto;font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:#00ff9d;background:rgba(0,255,157,0.05);border:1px solid rgba(0,255,157,0.2);padding:4px 12px;border-radius:4px;letter-spacing:0.08em;font-weight:500}
+.integrity-checks{display:flex;flex-direction:column;gap:10px}
+.chk{display:flex;align-items:center;gap:10px;font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.08em;color:#506d84;text-transform:uppercase}
+.chk i{color:#00ff9d;font-size:0.7rem}
 
-/* Footer */
-.pg-footer{text-align:center;margin-top:20px;padding-bottom:8px}
-.pg-footer p{font-family:'JetBrains Mono',monospace;font-size:0.48rem;letter-spacing:0.12em;color:#1e3a4a;text-transform:uppercase;line-height:1.9}
+/* Footer layout rules */
+.pg-footer{text-align:center;padding:10px 0 20px}
+.pg-footer p{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.08em;color:#3a546a;text-transform:uppercase;line-height:2}
 
-/* Animations */
-.fade{animation:fadeUp 0.65s ease both}
-.d1{animation-delay:0.08s}.d2{animation-delay:0.16s}.d3{animation-delay:0.24s}.d4{animation-delay:0.32s}
-@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+/* Layout animations */
+.fade{animation:fadeUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) both}
+.d1{animation-delay:0.05s}.d2{animation-delay:0.1s}.d3{animation-delay:0.15s}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav class="nav">
-  <a href="https://pirana-global.github.io/pirana-portal/" class="nav-brand">
-    <img src="logo.png" onerror="this.style.display='none'" alt="PIRANA" class="nav-logo">
-    <div>
-      <div class="nav-name">PIRANA</div>
-      <span class="nav-sub">Certificate Verification</span>
-    </div>
-  </a>
-  <div class="nav-right">Secure Verification Portal</div>
+  <div class="nav-container">
+    <a href="https://pirana-global.github.io/pirana-portal/" class="nav-brand">
+      <div class="nav-logo-box">
+        <i class="fas fa-terminal"></i>
+      </div>
+      <div class="nav-brand-text">
+        <div class="nav-name">PIRANA</div>
+        <span class="nav-sub">Certificate Verification</span>
+      </div>
+    </a>
+    <div class="nav-right">Secure Verification Portal</div>
+  </div>
 </nav>
 
 <div class="wrap">
 
+  <!-- LOADING STATE -->
   <div id="s-load" class="loading">
     <span class="spinner"></span>
-    <span class="loading-txt">Verifying Certificate...</span>
+    <span class="loading-txt">Verifying ID...</span>
   </div>
 
+  <!-- NO ROUTE PARAMETER KEY PROVIDED -->
   <div id="s-noid" class="hidden">
     <div class="state-box fade">
       <div class="state-icon"><i class="fas fa-search"></i></div>
       <div class="state-title">No Certificate ID</div>
-      <p class="state-desc">This portal needs a valid certificate ID.<br>Please scan the QR code on the certificate.</p>
+      <p class="state-desc">This engine requires a query identifier string to run validation diagnostics.</p>
       <div class="state-hint">verify.html?id=PIRANA-ENG-2501</div>
     </div>
   </div>
 
+  <!-- SYSTEM EXCEPTION: CERTIFICATE RECORD CRITICAL FAILURE -->
   <div id="s-bad" class="hidden">
     <div class="state-box fade">
       <div class="state-icon red"><i class="fas fa-times"></i></div>
       <div class="state-title red">Certificate Not Found</div>
-      <p class="state-desc">This ID does not exist in PIRANA's official records.</p>
+      <p class="state-desc">The provided validation parameters do not match any issued entity entries.</p>
       <div id="v-badid" class="invalid-id"></div>
-      <p class="state-contact">Contact <span>connect.pirana@gmail.com</span> with the ID above.</p>
+      <p class="state-contact">Flag security alerts to: <span>connect.pirana@gmail.com</span></p>
     </div>
   </div>
 
+  <!-- VERIFIED PRODUCTION VIEWPORT -->
   <div id="s-ok" class="hidden">
 
+    <!-- Top Verification Status Ribbon -->
     <div class="badge-wrap fade">
       <div class="badge"><span class="badge-dot"></span>Certificate Verified — Authentic</div>
       <div class="confirm-title">Achievement Confirmed</div>
       <div class="confirm-sub">This certificate has been verified against<br>PIRANA's official records.</div>
     </div>
 
+    <!-- Hidden Drive Injection Target -->
     <div id="dl-wrap" class="dl-box hidden fade d1">
-      <div class="dl-label"><i class="fas fa-certificate" style="margin-right:5px"></i>Official Certificate — Ready to Download</div>
-      <div class="dl-desc">Your verified certificate PDF is stored securely on Google Drive.</div>
+      <div class="dl-label"><i class="fas fa-file-pdf" style="margin-right:6px"></i>External Asset Found</div>
+      <div class="dl-desc">An official high-resolution document storage node is linked to this item record.</div>
       <a id="dl-btn" href="#" target="_blank" rel="noopener noreferrer" class="dl-btn">
-        <i class="fas fa-download"></i>Download Certificate PDF<i class="fab fa-google-drive" style="margin-left:5px"></i>
+        <i class="fas fa-download"></i> Download Certificate PDF
       </a>
-      <div class="dl-note"><i class="fas fa-lock" style="margin-right:4px"></i>Secured on Google Drive · Official PIRANA Document</div>
     </div>
 
+    <!-- Main Dynamic Frame -->
     <div class="cert-card fade d2">
-      <div class="cert-top-line"></div>
-      <div class="scan-line"></div>
-      <div class="watermark"><span>VERIFIED</span></div>
       <div class="cert-body">
 
+        <!-- Top Header Block -->
         <div class="cert-header">
           <div class="cert-brand">
-            <img src="logo.png" onerror="this.style.display='none'" alt="PIRANA" class="cert-brand-logo">
+            <div class="cert-logo-placeholder">
+              <i class="fas fa-cube"></i>
+            </div>
             <div>
-              <div class="cert-brand-name">PIRANA</div>
+              <div class="cert-brand-title">PIRANA</div>
               <span class="cert-brand-sub">Intelligent Systems ·<br>Engineered to Scale</span>
             </div>
           </div>
@@ -211,18 +213,19 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
           </div>
         </div>
 
-        <hr class="divider">
-
-        <div class="lbl-sm">This certifies that</div>
+        <!-- Name Plate Layout -->
+        <div class="lbl-sm" style="margin-bottom: 16px;">This certifies that</div>
         <div id="v-name" class="cert-name"></div>
         <div id="v-role" class="cert-role"></div>
 
+        <!-- Inner Focus Track Data -->
         <div class="project-block">
-          <div class="lbl-sm">Has Successfully Completed</div>
+          <div class="lbl-sm" style="margin-bottom: 8px;">Has Successfully Completed</div>
           <div id="v-project" class="project-title"></div>
           <div id="v-contribution" class="project-desc"></div>
         </div>
 
+        <!-- Meta Information Matrix -->
         <div class="meta-grid">
           <div class="meta-cell">
             <div class="meta-lbl">Department</div>
@@ -242,9 +245,11 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
           </div>
         </div>
 
+        <!-- Engineering Stack Metadata -->
         <div class="skills-lbl">Skills &amp; Technologies</div>
         <div id="v-skills" class="skills-wrap"></div>
 
+        <!-- Bottom Signature Matrix -->
         <div class="sig-row">
           <div>
             <div class="sig-name">PIRANA</div>
@@ -254,13 +259,14 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
           <div class="sig-right">
             <div class="sig-tick"><i class="fas fa-check"></i></div>
             <div class="sig-verified">Digitally Verified</div>
-            <div class="sig-url">pirana-global.github.io/pirana-verify</div>
+            <div class="sig-url">global.github.io</div>
           </div>
         </div>
 
       </div>
     </div>
 
+    <!-- Integrity Checklist Block -->
     <div class="integrity fade d3">
       <div class="integrity-hdr">
         <i class="fas fa-shield-halved integrity-icon"></i>
@@ -268,34 +274,29 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
         <span class="integrity-pass">PASS</span>
       </div>
       <div class="integrity-checks">
-        <div class="chk"><i class="fas fa-check"></i>ID exists in official records</div>
-        <div class="chk"><i class="fas fa-check"></i>Issued by PIRANA Global</div>
-        <div class="chk"><i class="fas fa-check"></i>Verified on GitHub Pages</div>
+        <div class="chk"><i class="fas fa-check"></i> ID exists in official records</div>
+        <div class="chk"><i class="fas fa-check"></i> Issued by PIRANA Global</div>
+        <div class="chk"><i class="fas fa-check"></i> Verified on GitHub Pages</div>
       </div>
     </div>
 
-  </div><div class="pg-footer">
+  </div>
+
+  <!-- Bottom Platform Footer Content -->
+  <div class="pg-footer">
     <p>This verification is hosted at pirana-global.github.io · connect.pirana@gmail.com</p>
     <p>For manual verification contact connect.pirana@gmail.com with the Certificate ID</p>
   </div>
 
-</div><script>
-// =====================================================================
-//  PIRANA CERTIFICATE DATABASE
-//  Repo: pirana-global/pirana-portal
-//  URL : https://pirana-global.github.io/pirana-portal/verify.html
-//
-//  ID FORMAT  : PIRANA-[DEPT]-[YY][MM][SEQ]
-//  DEPT CODES : ENG · AI · DATA · CYBER · BIZ · MKT
-// =====================================================================
+</div>
 
+<script>
 var DB = {
-
   "PIRANA-ENG-2501": {
     name:         "Arjun Mehta",
     role:         "Engineering Intern",
     project:      "AI Automation Pipeline — Module Development",
-    contribution: "Designed and implemented backend workflow automation modules, integrated CRM APIs, and contributed to the PIRANA core automation framework. Demonstrated strong problem-solving and technical ownership throughout the engagement.",
+    contribution: "Designed and implemented backend workflow automation modules, integrated CRM APIs, and contributed to the PIRANA core automation framework. Demonstrated strong problem-solving skills and technical ownership throughout the engagement.",
     dept:         "Engineering",
     duration:     "3 Months",
     date:         "15 June 2025",
@@ -303,7 +304,6 @@ var DB = {
     skills:       ["Python","Node.js","REST APIs","Automation","CRM Integration","Git"],
     driveLink:    ""
   },
-
   "PIRANA-AI-2501": {
     name:         "Priya Sharma",
     role:         "AI Research Intern",
@@ -316,7 +316,6 @@ var DB = {
     skills:       ["Python","LLMs","Prompt Engineering","Research","Data Analysis","Machine Learning"],
     driveLink:    ""
   },
-
   "PIRANA-DATA-2501": {
     name:         "Rohan Das",
     role:         "Data Engineering Intern",
@@ -329,7 +328,6 @@ var DB = {
     skills:       ["SQL","Python","ETL Pipelines","BI Dashboards","Data Modelling","Pandas"],
     driveLink:    ""
   },
-
   "PIRANA-CYBER-2501": {
     name:         "Anjali Verma",
     role:         "Cybersecurity Intern",
@@ -342,7 +340,6 @@ var DB = {
     skills:       ["Threat Analysis","SIEM","Python","Network Security","Vulnerability Assessment","OSINT"],
     driveLink:    ""
   },
-
   "PIRANA-BIZ-2501": {
     name:         "Neha Kapoor",
     role:         "Business Consulting Intern",
@@ -355,33 +352,9 @@ var DB = {
     skills:       ["Market Research","Business Strategy","Data Analysis","Presentation","Consulting","Documentation"],
     driveLink:    ""
   }
-
   // === ADD NEW INTERNS BELOW =========================================
-  // STEP 1: Add a comma after the } of the LAST entry above this block
-  // STEP 2: Copy the template below (remove the // from each line):
-  //
-  // ,"PIRANA-ENG-2502": {
-  //   name:         "Full Name",
-  //   role:         "Engineering Intern",
-  //   project:      "Project Title",
-  //   contribution: "2-3 sentences about what they built or researched.",
-  //   dept:         "Engineering",
-  //   duration:     "2 Months",
-  //   date:         "01 January 2026",
-  //   grade:        "Excellent",
-  //   skills:       ["Skill1","Skill2","Skill3"],
-  //   driveLink:    "https://drive.google.com/file/d/YOUR_FILE_ID/view?usp=sharing"
-  // }
-  //
-  //  RULES:
-  //  - Every entry except the LAST needs a comma after its }
-  //  - The LAST entry before this comment has NO comma
-  //  - IDs must be UNIQUE — never reuse one
-  //  - IDs are UPPERCASE and case-sensitive
-  // ===================================================================
 };
 
-// Engine — do not edit below this line
 function hide(id){ document.getElementById(id).classList.add('hidden') }
 function show(id){ document.getElementById(id).classList.remove('hidden') }
 function set(id,v){ document.getElementById(id).textContent = v }
@@ -412,9 +385,9 @@ function render(d, id){
   var link = (d.driveLink || '').trim();
   if(link && link.indexOf('YOUR_FILE_ID') === -1 && link.length > 10){
     document.getElementById('dl-btn').href = link;
-    document.getElementById('dl-wrap').classList.remove('hidden');
+    show('dl-wrap');
   } else {
-    document.getElementById('dl-wrap').classList.add('hidden');
+    hide('dl-wrap');
   }
 }
 
@@ -432,7 +405,7 @@ window.addEventListener('DOMContentLoaded', function(){
     }
     render(cert, key);
     show('s-ok');
-  }, 900);
+  }, 400);
 });
 </script>
 </body>
